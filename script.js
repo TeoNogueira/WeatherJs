@@ -4,10 +4,10 @@ event.preventDefault();
 let input = document.querySelector('#searchInput').value
 
 if(input !== '') {
+    clearInfo()
+    showAlert('Carregando...')
 
-    showWarning('Carregando...')
 
-} 
 console.log(input)
 
 let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input)}&appid=fbd527baf0cf1291831321e6c1faad42&units=metric&lang=pt_br`
@@ -16,7 +16,7 @@ let results = await fetch(url);
 
 let json = await results.json();
 
-console.log(json)
+// console.log(json)
 if(json.cod === 200) {
 
     showInfo({
@@ -30,15 +30,18 @@ if(json.cod === 200) {
     
 
 } else {
+     clearInfo();
+    showAlert('Não Encontramos essa localização.');
+} } else {
 
-    showWarning('Não Encontramos essa localização.')
+    clearInfo();
 }
 
 });
 
 function showInfo(json) {
 
-showWarning('');
+showAlert('');
 
 document.querySelector('.resultado').style.display = 'block';
 
@@ -48,12 +51,27 @@ document.querySelector('.ventoInfo').innerHTML = `${json.windSpeed} <span>km/h</
 
 document.querySelector('.temp img').setAttribute('src', `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
 
-document.querySelector('.ventoPonto').style.transform = `rotate(${json.windAngle}deg)`;
+document.querySelector('.ventoPonto').style.transform = `rotate(${json.windAngle-90}deg)`;
+
+
+}
+
+function clearInfo() {
+
+    document.querySelector('.resultado').style.display = 'none';
+
 }
 
 
-function showWarning(msg) {
+function showAlert(msg) {
 
 
     document.querySelector('.aviso').innerHTML =  msg;
 }
+
+
+
+
+
+//openweathermap.org API#SITE
+//Teo Nogueira Developer Front-End

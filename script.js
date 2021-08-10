@@ -16,7 +16,7 @@ let results = await fetch(url); //O.A - 3
 
 let json = await results.json(); //O.A - 4
 
-// console.log(json)
+console.log(json)
 if(json.cod === 200) {
 
     showInfo({
@@ -42,7 +42,7 @@ if(json.cod === 200) {
 function showInfo(json) {
 
 showAlert('');
-
+//Display:none;  now Block
 document.querySelector('.resultado').style.display = 'block';
 
 document.querySelector('.titulo').innerHTML = `${json.name}, ${json.country}`
@@ -52,7 +52,6 @@ document.querySelector('.ventoInfo').innerHTML = `${json.windSpeed} <span>km/h</
 document.querySelector('.temp img').setAttribute('src', `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
 
 document.querySelector('.ventoPonto').style.transform = `rotate(${json.windAngle-90}deg)`;
-
 
 }
 
@@ -75,4 +74,4 @@ function showAlert(msg) {
 
 //openweathermap.org API#SITE
 //Teo Nogueira Developer Front-End
-//gratitude to the application developer: Bonieky larcerda
+//Gratitude to the application developer: Bonieky lacerda

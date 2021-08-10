@@ -1,7 +1,7 @@
 document.querySelector('.busca').addEventListener('submit', async (event) => {
 event.preventDefault();
 
-let input = document.querySelector('#searchInput').value
+let input = document.querySelector('#searchInput').value// OPEN API 1
 
 if(input !== '') {
     clearInfo()
@@ -10,11 +10,11 @@ if(input !== '') {
 
 console.log(input)
 
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input)}&appid=fbd527baf0cf1291831321e6c1faad42&units=metric&lang=pt_br`
+let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input)}&appid=fbd527baf0cf1291831321e6c1faad42&units=metric&lang=pt_br` //O.A - 2
 //d06cdb298fafc83c520d5ab877fc477e&
-let results = await fetch(url);
+let results = await fetch(url); //O.A - 3
 
-let json = await results.json();
+let json = await results.json(); //O.A - 4
 
 // console.log(json)
 if(json.cod === 200) {
@@ -75,3 +75,4 @@ function showAlert(msg) {
 
 //openweathermap.org API#SITE
 //Teo Nogueira Developer Front-End
+//gratitude to the application developer: Bonieky larcerda
